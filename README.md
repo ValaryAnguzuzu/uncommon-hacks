@@ -1,6 +1,6 @@
-# Offer Pending Prototype
+# Sink Or Swim Prototype
 
-This Godot project contains a first playable prototype for **Offer Pending**, a 2D dashboard strategy game about surviving recruiting season before graduation.
+This Godot project contains a first playable prototype for **Sink Or Swim**, a 2D dashboard strategy game about surviving recruiting season before graduation.
 
 ## How to Test
 
