@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dx0x5j4osi0fa"]
+
+[node name="InterviewPrepWindow" type="PanelContainer"]
+custom_minimum_size = Vector2(440, 340)
+layout_mode = 3
+offset_left = 220.0
+offset_top = 140.0
+offset_right = 660.0
+offset_bottom = 480.0
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleBar" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Content/TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Interview Prep"
+
+[node name="CloseButton" type="Button" parent="Content/TitleBar"]
+layout_mode = 2
+text = "X"
+
+[node name="MockInterviewButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Mock Interview"
+
+[node name="DSAPracticeButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "DSA Practice"
+
+[node name="SystemDesignButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "System Design Practice"
+
+[node name="CompanyResearchButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Company Research"

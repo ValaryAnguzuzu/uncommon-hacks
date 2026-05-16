@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://db3lkpjfyrgjv"]
+
+[node name="JobBoardWindow" type="PanelContainer"]
+custom_minimum_size = Vector2(560, 500)
+layout_mode = 3
+offset_left = 240.0
+offset_top = 100.0
+offset_right = 800.0
+offset_bottom = 600.0
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleBar" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Content/TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Job Board"
+
+[node name="CloseButton" type="Button" parent="Content/TitleBar"]
+layout_mode = 2
+text = "X"
+
+[node name="FrontendIntern" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="JobNameLabel" type="Label" parent="Content/FrontendIntern"]
+layout_mode = 2
+text = "Frontend Intern"
+
+[node name="MatchLabel" type="Label" parent="Content/FrontendIntern"]
+layout_mode = 2
+text = "Match: 0%"
+
+[node name="RequiredKeywordsLabel" type="Label" parent="Content/FrontendIntern"]
+layout_mode = 2
+text = "Requires: React, UI, Git"
+
+[node name="ApplyButton" type="Button" parent="Content/FrontendIntern"]
+layout_mode = 2
+text = "Apply"
+
+[node name="DataAnalystIntern" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="JobNameLabel" type="Label" parent="Content/DataAnalystIntern"]
+layout_mode = 2
+text = "Data Analyst Intern"
+
+[node name="MatchLabel" type="Label" parent="Content/DataAnalystIntern"]
+layout_mode = 2
+text = "Match: 0%"
+
+[node name="RequiredKeywordsLabel" type="Label" parent="Content/DataAnalystIntern"]
+layout_mode = 2
+text = "Requires: Python, SQL, Dashboard"
+
+[node name="ApplyButton" type="Button" parent="Content/DataAnalystIntern"]
+layout_mode = 2
+text = "Apply"
+
+[node name="SoftwareEngineeringIntern" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="JobNameLabel" type="Label" parent="Content/SoftwareEngineeringIntern"]
+layout_mode = 2
+text = "Software Engineering Intern"
+
+[node name="MatchLabel" type="Label" parent="Content/SoftwareEngineeringIntern"]
+layout_mode = 2
+text = "Match: 0%"
+
+[node name="RequiredKeywordsLabel" type="Label" parent="Content/SoftwareEngineeringIntern"]
+layout_mode = 2
+text = "Requires: Git, Full Stack, Systems"
+
+[node name="ApplyButton" type="Button" parent="Content/SoftwareEngineeringIntern"]
+layout_mode = 2
+text = "Apply"
+
+[node name="McDonalds" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="JobNameLabel" type="Label" parent="Content/McDonalds"]
+layout_mode = 2
+text = "McDonald's"
+
+[node name="MatchLabel" type="Label" parent="Content/McDonalds"]
+layout_mode = 2
+text = "Match: ?%"
+
+[node name="RequiredKeywordsLabel" type="Label" parent="Content/McDonalds"]
+layout_mode = 2
+text = "Requires: Showing Up"
+
+[node name="ApplyButton" type="Button" parent="Content/McDonalds"]
+layout_mode = 2
+text = "Apply"

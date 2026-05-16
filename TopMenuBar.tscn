@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://8nn8bvi5c7vw"]
+
+[node name="TopMenuBar" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+
+[node name="StatsRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="WeekLabel" type="Label" parent="StatsRow"]
+layout_mode = 2
+text = "Week 1"
+
+[node name="MoneyLabel" type="Label" parent="StatsRow"]
+layout_mode = 2
+text = "$500"
+
+[node name="DebtLabel" type="Label" parent="StatsRow"]
+layout_mode = 2
+text = "Debt $0"
+
+[node name="BurnoutLabel" type="Label" parent="StatsRow"]
+layout_mode = 2
+text = "Burnout 10%"
+
+[node name="ConfidenceLabel" type="Label" parent="StatsRow"]
+layout_mode = 2
+text = "Confidence 50%"
+
+[node name="InterviewSkillLabel" type="Label" parent="StatsRow"]
+layout_mode = 2
+text = "Interview 20%"
+
+[node name="ScoreLabel" type="Label" parent="StatsRow"]
+layout_mode = 2
+text = "Score 0"
+
+[node name="KeywordsLabel" type="Label" parent="StatsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Keywords: Git"
+clip_text = true
+
+[node name="EndWeekButton" type="Button" parent="StatsRow"]
+layout_mode = 2
+text = "End Week"

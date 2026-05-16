@@ -1,0 +1,19 @@
+# Godot local/editor data
+.godot/
+
+# Godot imports and exports
+.import/
+export.cfg
+export_presets.cfg
+*.translation
+
+# Godot generated IDs/backups
+*.uid
+*.tmp
+*.bak
+
+# macOS
+.DS_Store
+
+# Logs
+*.log

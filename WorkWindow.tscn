@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://i7ag8atsalcu"]
+
+[node name="WorkWindow" type="PanelContainer"]
+custom_minimum_size = Vector2(420, 320)
+layout_mode = 3
+offset_left = 120.0
+offset_top = 120.0
+offset_right = 540.0
+offset_bottom = 440.0
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleBar" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Content/TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Work"
+
+[node name="CloseButton" type="Button" parent="Content/TitleBar"]
+layout_mode = 2
+text = "X"
+
+[node name="BlastApplicationsButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Blast Applications"
+
+[node name="SideGigButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Side Gig"
+
+[node name="NetworkButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Network"
+
+[node name="RestButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Rest"

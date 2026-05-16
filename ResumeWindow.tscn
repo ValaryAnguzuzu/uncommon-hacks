@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dt3vq83hqkuh"]
+
+[node name="ResumeWindow" type="PanelContainer"]
+custom_minimum_size = Vector2(460, 420)
+layout_mode = 3
+offset_left = 160.0
+offset_top = 100.0
+offset_right = 620.0
+offset_bottom = 520.0
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleBar" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Content/TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resume"
+
+[node name="CloseButton" type="Button" parent="Content/TitleBar"]
+layout_mode = 2
+text = "X"
+
+[node name="ResumeScoreLabel" type="Label" parent="Content"]
+layout_mode = 2
+text = "Resume Score: 0"
+
+[node name="KeywordsTitle" type="Label" parent="Content"]
+layout_mode = 2
+text = "Keywords"
+
+[node name="KeywordsList" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="GitKeywordLabel" type="Label" parent="Content/KeywordsList"]
+layout_mode = 2
+text = "Git"
+
+[node name="ProjectsTitle" type="Label" parent="Content"]
+layout_mode = 2
+text = "Projects Completed"
+
+[node name="ProjectsList" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="NoProjectsLabel" type="Label" parent="Content/ProjectsList"]
+layout_mode = 2
+text = "None"
