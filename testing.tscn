@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://3vp1345w0rdj"]
-
-[node name="Testing" type="Node2D" unique_id=110511411]
-
-[node name="Timer" type="Timer" parent="." unique_id=1746690794]

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cpacwpx00enb3"]
+
+[node name="FloatingPointPopup" type="Label"]
+layout_mode = 3
+offset_right = 120.0
+offset_bottom = 28.0
+text = "+$180"

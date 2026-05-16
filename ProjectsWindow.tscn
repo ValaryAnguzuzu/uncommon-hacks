@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c8abnp66n75c7"]
+
+[node name="ProjectsWindow" type="PanelContainer"]
+custom_minimum_size = Vector2(520, 460)
+layout_mode = 3
+offset_left = 180.0
+offset_top = 120.0
+offset_right = 700.0
+offset_bottom = 580.0
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleBar" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Content/TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Projects"
+
+[node name="CloseButton" type="Button" parent="Content/TitleBar"]
+layout_mode = 2
+text = "X"
+
+[node name="PortfolioSiteButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Portfolio Site - Unlocks UI, React"
+
+[node name="DataDashboardButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Data Dashboard - Unlocks SQL, Dashboard"
+
+[node name="FullStackAppButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Full Stack App - Unlocks Full Stack, Database"
+
+[node name="AIResumeHelperButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "AI Resume Helper - Unlocks Python, AI"
+
+[node name="CampusMarketplaceButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Campus Marketplace - Unlocks Product, Git"
+
+[node name="InterviewTrackerButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Interview Tracker - Unlocks Communication, Systems"

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://pjx1dk68f1xh"]
+
+[node name="InterviewWindow" type="PanelContainer"]
+custom_minimum_size = Vector2(520, 420)
+layout_mode = 3
+offset_left = 260.0
+offset_top = 120.0
+offset_right = 780.0
+offset_bottom = 540.0
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleBar" type="HBoxContainer" parent="Content"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Content/TitleBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Interview"
+
+[node name="CloseButton" type="Button" parent="Content/TitleBar"]
+layout_mode = 2
+text = "X"
+
+[node name="LockedLabel" type="Label" parent="Content"]
+layout_mode = 2
+text = "No interviews available."
+
+[node name="QuestionLabel" type="Label" parent="Content"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Question will appear here."
+
+[node name="AnswerAButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Answer A"
+
+[node name="AnswerBButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Answer B"
+
+[node name="AnswerCButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Answer C"
+
+[node name="FeedbackLabel" type="Label" parent="Content"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Feedback will appear here."

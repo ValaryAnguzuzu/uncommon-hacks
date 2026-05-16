@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://tyjhhiuap11t"]
+
+[node name="ToastNotification" type="PanelContainer"]
+custom_minimum_size = Vector2(320, 56)
+layout_mode = 3
+offset_left = 920.0
+offset_top = 64.0
+offset_right = 1240.0
+offset_bottom = 120.0
+
+[node name="Content" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="IconLabel" type="Label" parent="Content"]
+layout_mode = 2
+text = "!"
+
+[node name="MessageLabel" type="Label" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Notification message"
