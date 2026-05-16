@@ -895,6 +895,61 @@ NotificationManager shows toast
 FloatingPointPopup shows point changes
 ```
 
+See the below for explanation on the roles of the different managers:
+
+
+Think of “managers” as plain Godot scripts that own game rules so the button UI does not become a giant mess.
+
+  A simpler breakdown:
+
+  PlayerState
+  Holds the current run data: week, money, debt, burnout, confidence, interview skill,
+  score, keywords, completed projects, applications, interviews. This is the source of
+  truth.
+
+  GameManager
+  Coordinates the whole game. Starts the run, checks win/loss, tells UI to refresh,
+  routes major events.
+
+  WeekManager
+  Handles week progression: action points, idle timer, End Week, rent/expenses,
+  graduation deadline.
+
+  WindowManager
+  Handles fake-desktop behavior: open Resume window, close Projects window, bring a
+  window to front, maybe drag windows later.
+
+  ActionManager
+  Handles generic weekly actions like Side Gig, Rest, Network, Blast Applications.
+
+  ProjectManager
+  Handles building projects: progress, completion, keyword unlocks, score rewards.
+
+  KeywordManager / ResumeManager
+  These can probably be one thing for MVP. Tracks resume keywords and resume score,
+  then tells the Resume window and Job Board what changed.
+
+  JobBoardManager
+  Stores job listings and calculates match percentages from resume keywords.
+
+  ApplicationManager
+  Handles applying to jobs: sent/viewed/rejected/interview unlocked/offer state.
+
+  InterviewManager
+  Loads interview questions, tracks answers, scores the interview, decides pass/fail.
+
+  FinanceManager
+  Handles money, debt, expenses, Discover payments, checking-negative loss.
+
+  BurnoutManager
+  Handles burnout changes and burnout-related penalties/loss.
+
+  NotificationManager
+  Shows toast popups like “Application sent,” “Interview unlocked,” +$180, +React.
+
+  EndingManager
+  Shows win/lose screens. For MVP this can just live inside GameManager.
+
 ---
 
 # Main Design Principle
