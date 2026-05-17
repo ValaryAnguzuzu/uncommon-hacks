@@ -158,6 +158,9 @@ func _execute_prep(action: Dictionary) -> void:
 		return
 
 	var effects: Dictionary = action.get("effects", {})
+	# Lock the prep card before stat helpers emit state_changed, otherwise the
+	# list can redraw once with stale clickable state during the same click.
+	_used_actions[action_id] = true
 
 	if effects.has("interview_skill"):
 		PlayerState.add_interview_skill(int(effects["interview_skill"]))
@@ -169,7 +172,7 @@ func _execute_prep(action: Dictionary) -> void:
 		PlayerState.add_score(int(effects["score"]))
 
 	PlayerState.spend_action_point()
-	_used_actions[action_id] = true
+	refresh()
 
 
 func _make_badge(key: String, value: int) -> PanelContainer:

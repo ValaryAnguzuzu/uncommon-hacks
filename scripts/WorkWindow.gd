@@ -284,6 +284,10 @@ func _execute_action(action: Dictionary) -> void:
 		return
 
 	var effects: Dictionary = action.get("effects", {})
+	# Mark the card immediately. PlayerState helpers emit state_changed, which
+	# redraws this window while the click handler is still running. Locking first
+	# makes the action feel like it registers on the first click.
+	_used_actions[action_id] = true
 
 	if effects.has("money"):
 		PlayerState.add_money(int(effects["money"]))
@@ -302,7 +306,7 @@ func _execute_action(action: Dictionary) -> void:
 			PlayerState.add_application()
 
 	PlayerState.spend_action_point()
-	_used_actions[action_id] = true
+	refresh()
 
 
 func _clear_container(container: Container) -> void:
