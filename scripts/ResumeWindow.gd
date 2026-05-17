@@ -232,7 +232,7 @@ func _make_project_card_style() -> StyleBoxFlat:
 
 func _clear_container(container: Container) -> void:
 	for child in container.get_children():
-		child.free()
+		child.queue_free()
 
 
 func _humanize_id(id: String) -> String:

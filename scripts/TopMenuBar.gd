@@ -60,7 +60,6 @@ func refresh() -> void:
 
 func _apply_responsive_layout() -> void:
 	var compact: bool = size.x < 1080.0
-	var tiny: bool = size.x < 820.0
 	var font_size: int = 11 if compact else 12
 
 	objective_label.visible = false

@@ -296,7 +296,7 @@ func _toggle_expand() -> void:
 
 func _clear_container(container: Container) -> void:
 	for child in container.get_children():
-		child.free()
+		child.queue_free()
 
 
 func _on_close_button_pressed() -> void:
