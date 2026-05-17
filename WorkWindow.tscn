@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://i7ag8atsalcu"]
+[gd_scene load_steps=2 format=3 uid="uid://i7ag8atsalcu"]
+
+[ext_resource type="Script" path="res://scripts/WorkWindow.gd" id="1_work_window_script"]
 
 [node name="WorkWindow" type="PanelContainer"]
 custom_minimum_size = Vector2(420, 320)
@@ -7,6 +9,7 @@ offset_left = 120.0
 offset_top = 120.0
 offset_right = 540.0
 offset_bottom = 440.0
+script = ExtResource("1_work_window_script")
 
 [node name="Content" type="VBoxContainer" parent="."]
 layout_mode = 2
