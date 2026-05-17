@@ -1,0 +1,137 @@
+[
+  {
+    "id": "portfolio_site",
+    "name": "Portfolio Site",
+    "image_color": "#7CC7FF",
+    "image_label": "PORTFOLIO",
+    "icon_type": "portfolio",
+    "keyword_count": 3,
+    "keyword_pool": ["React", "UI", "Git", "Frontend", "CSS", "Design", "Accessibility", "Responsive", "HTML", "Portfolio", "Vercel", "Figma"]
+  },
+  {
+    "id": "data_dashboard",
+    "name": "Data Dashboard",
+    "image_color": "#8FE3B8",
+    "image_label": "DASHBOARD",
+    "icon_type": "dashboard",
+    "keyword_count": 3,
+    "keyword_pool": ["SQL", "Dashboard", "Data", "Python", "Charts", "Analytics", "Reports", "ETL", "Pandas", "Visualization", "Tableau", "Metrics"]
+  },
+  {
+    "id": "full_stack_app",
+    "name": "Full Stack App",
+    "image_color": "#C6A6FF",
+    "image_label": "FULL STACK",
+    "icon_type": "full_stack",
+    "keyword_count": 4,
+    "keyword_pool": ["Full Stack", "Database", "Git", "API", "Auth", "Backend", "Frontend", "Testing", "PostgreSQL", "REST", "CRUD", "Deployment", "Node"]
+  },
+  {
+    "id": "ai_resume_helper",
+    "name": "AI Resume Helper",
+    "image_color": "#FFD36E",
+    "image_label": "AI TOOL",
+    "icon_type": "ai",
+    "keyword_count": 3,
+    "keyword_pool": ["Python", "AI", "Product", "NLP", "Prompting", "Automation", "UX", "APIs", "LLM", "OpenAI", "Text Processing", "Evaluation"]
+  },
+  {
+    "id": "campus_marketplace",
+    "name": "Campus Marketplace",
+    "image_color": "#FF9E80",
+    "image_label": "MARKET",
+    "icon_type": "market",
+    "keyword_count": 4,
+    "keyword_pool": ["Product", "Full Stack", "Communication", "Database", "Payments", "Search", "UX", "Launch", "Marketplace", "Messaging", "Moderation", "User Research"]
+  },
+  {
+    "id": "interview_tracker",
+    "name": "Interview Tracker",
+    "image_color": "#9DE7E2",
+    "image_label": "TRACKER",
+    "icon_type": "tracker",
+    "keyword_count": 3,
+    "keyword_pool": ["Communication", "Systems", "DSA", "Planning", "Research", "Organization", "Notes", "Prep", "Scheduling", "CRM", "Follow-up", "Behavioral"]
+  },
+  {
+    "id": "leetcode_helper",
+    "name": "DSA Practice Tool",
+    "image_color": "#F7A8D8",
+    "image_label": "DSA LAB",
+    "icon_type": "dsa",
+    "keyword_count": 3,
+    "keyword_pool": ["DSA", "Algorithms", "Python", "Java", "Problem Solving", "Graphs", "Dynamic Programming", "Testing", "Complexity", "Recursion"]
+  },
+  {
+    "id": "api_microservice",
+    "name": "API Microservice",
+    "image_color": "#A8D0FF",
+    "image_label": "API",
+    "icon_type": "api",
+    "keyword_count": 4,
+    "keyword_pool": ["Backend", "API", "REST", "Node", "Python", "Flask", "FastAPI", "Testing", "Postman", "Docker", "Logging", "Validation"]
+  },
+  {
+    "id": "cloud_deploy_lab",
+    "name": "Cloud Deploy Lab",
+    "image_color": "#BDEB7A",
+    "image_label": "CLOUD",
+    "icon_type": "cloud",
+    "keyword_count": 4,
+    "keyword_pool": ["AWS", "Cloud", "Docker", "CI/CD", "Deployment", "Linux", "Monitoring", "Environment Variables", "GitHub Actions", "DevOps", "Containers"]
+  },
+  {
+    "id": "mobile_habit_app",
+    "name": "Mobile Habit App",
+    "image_color": "#FFB47C",
+    "image_label": "MOBILE",
+    "icon_type": "mobile",
+    "keyword_count": 3,
+    "keyword_pool": ["Mobile", "React Native", "UI", "State Management", "Local Storage", "Notifications", "UX", "Accessibility", "Product", "Testing"]
+  },
+  {
+    "id": "security_audit_tool",
+    "name": "Security Audit Tool",
+    "image_color": "#FF7D7D",
+    "image_label": "SECURITY",
+    "icon_type": "security",
+    "keyword_count": 3,
+    "keyword_pool": ["Security", "Python", "Automation", "CLI", "Validation", "OWASP", "Scanning", "Reports", "Linux", "Scripting"]
+  },
+  {
+    "id": "open_source_fix",
+    "name": "Open Source Fix",
+    "image_color": "#D4D8FF",
+    "image_label": "OSS PR",
+    "icon_type": "oss",
+    "keyword_count": 3,
+    "keyword_pool": ["Open Source", "Git", "Code Review", "Debugging", "Testing", "Documentation", "Collaboration", "Issue Triage", "Pull Request", "Communication"]
+  },
+  {
+    "id": "accessibility_audit",
+    "name": "Accessibility Audit",
+    "image_color": "#A7F0BA",
+    "image_label": "A11Y",
+    "icon_type": "accessibility",
+    "keyword_count": 3,
+    "keyword_pool": ["Accessibility", "UI", "UX", "WCAG", "Testing", "HTML", "Keyboard Navigation", "Screen Readers", "Design", "Frontend"]
+  },
+  {
+    "id": "realtime_chat_app",
+    "name": "Realtime Chat App",
+    "image_color": "#91B7FF",
+    "image_label": "CHAT",
+    "icon_type": "chat",
+    "keyword_count": 4,
+    "keyword_pool": ["Realtime", "WebSockets", "Full Stack", "Backend", "Frontend", "Database", "Auth", "Messaging", "State Management", "Scaling"]
+  },
+  {
+    "id": "research_to_product",
+    "name": "Research to Product",
+    "image_color": "#F0D18A",
+    "image_label": "PRODUCT",
+    "icon_type": "product",
+    "keyword_count": 3,
+    "keyword_pool": ["Product", "User Research", "Prototyping", "Figma", "Communication", "Roadmap", "Metrics", "UX", "Launch", "Prioritization"]
+  }
+]
