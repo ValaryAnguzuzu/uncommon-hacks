@@ -28,7 +28,6 @@ expand_mode = 1
 
 [node name="TopMenuBar" parent="." unique_id=369510685 instance=ExtResource("1_top_menu_bar")]
 layout_mode = 1
-script = null
 
 [node name="TextureRect" type="TextureRect" parent="TopMenuBar" unique_id=971405030]
 layout_mode = 2
