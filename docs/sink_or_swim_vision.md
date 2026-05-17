@@ -996,3 +996,8 @@ Get offer or go negative
 ```
 
 Build only what supports that loop.
+# Theme
+
+The app should have a windows xp like image and aesthetic. 
+the background is already the bliss wallpaper from XP. 
+the whole app should be similar in aesthetic
