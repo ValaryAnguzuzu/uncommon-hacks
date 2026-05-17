@@ -28,7 +28,7 @@ mouse_filter = 2
 
 [node name="Dock" parent="." unique_id=223293515 instance=ExtResource("2_dock")]
 layout_mode = 1
-offset_top = -88.0
+offset_top = -44.0
 script = null
 
 [node name="ToastLayer" type="Control" parent="." unique_id=1506575902]
