@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://8nn8bvi5c7vw"]
+[gd_scene load_steps=2 format=3 uid="uid://8nn8bvi5c7vw"]
+
+[ext_resource type="Script" path="res://scripts/TopMenuBar.gd" id="1_top_menu_script"]
 
 [node name="TopMenuBar" type="PanelContainer"]
 custom_minimum_size = Vector2(0, 36)
@@ -7,6 +9,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 36.0
 grow_horizontal = 2
+script = ExtResource("1_top_menu_script")
 
 [node name="StatsRow" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -39,12 +42,6 @@ text = "Interview 20%"
 [node name="ScoreLabel" type="Label" parent="StatsRow"]
 layout_mode = 2
 text = "Score 0"
-
-[node name="KeywordsLabel" type="Label" parent="StatsRow"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Keywords: Git"
-clip_text = true
 
 [node name="EndWeekButton" type="Button" parent="StatsRow"]
 layout_mode = 2
