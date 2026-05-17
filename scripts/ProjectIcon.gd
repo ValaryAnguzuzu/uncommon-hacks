@@ -59,14 +59,14 @@ func _draw() -> void:
 	draw_circle(center + Vector2(size.x * 0.34, -size.y * 0.32), 18, soft)
 
 
-func _draw_portfolio(ink: Color, soft: Color) -> void:
+func _draw_portfolio(ink: Color, _soft: Color) -> void:
 	var monitor := Rect2(size.x * 0.22, size.y * 0.24, size.x * 0.56, size.y * 0.38)
 	draw_rect(monitor, ink, false, 4)
 	draw_line(Vector2(size.x * 0.38, size.y * 0.72), Vector2(size.x * 0.62, size.y * 0.72), ink, 4)
 	draw_line(Vector2(size.x * 0.5, size.y * 0.62), Vector2(size.x * 0.5, size.y * 0.72), ink, 4)
 
 
-func _draw_dashboard(ink: Color, soft: Color) -> void:
+func _draw_dashboard(ink: Color, _soft: Color) -> void:
 	for index in range(4):
 		var height := size.y * (0.22 + index * 0.09)
 		var x := size.x * (0.24 + index * 0.13)
@@ -74,13 +74,13 @@ func _draw_dashboard(ink: Color, soft: Color) -> void:
 	draw_line(Vector2(size.x * 0.2, size.y * 0.76), Vector2(size.x * 0.82, size.y * 0.76), ink, 3)
 
 
-func _draw_stack(ink: Color, soft: Color) -> void:
+func _draw_stack(ink: Color, _soft: Color) -> void:
 	for index in range(3):
 		var offset := Vector2(index * 10, index * 10)
 		draw_rect(Rect2(size.x * 0.24 + offset.x, size.y * 0.24 + offset.y, size.x * 0.44, size.y * 0.24), ink, false, 4)
 
 
-func _draw_ai(ink: Color, soft: Color) -> void:
+func _draw_ai(ink: Color, _soft: Color) -> void:
 	var points := [
 		Vector2(size.x * 0.28, size.y * 0.34),
 		Vector2(size.x * 0.54, size.y * 0.26),
@@ -92,21 +92,21 @@ func _draw_ai(ink: Color, soft: Color) -> void:
 		draw_circle(points[index], 8, ink)
 
 
-func _draw_market(ink: Color, soft: Color) -> void:
+func _draw_market(ink: Color, _soft: Color) -> void:
 	draw_rect(Rect2(size.x * 0.22, size.y * 0.38, size.x * 0.56, size.y * 0.34), ink, false, 4)
 	draw_line(Vector2(size.x * 0.2, size.y * 0.38), Vector2(size.x * 0.32, size.y * 0.22), ink, 4)
 	draw_line(Vector2(size.x * 0.8, size.y * 0.38), Vector2(size.x * 0.68, size.y * 0.22), ink, 4)
 	draw_line(Vector2(size.x * 0.32, size.y * 0.22), Vector2(size.x * 0.68, size.y * 0.22), ink, 4)
 
 
-func _draw_tracker(ink: Color, soft: Color) -> void:
+func _draw_tracker(ink: Color, _soft: Color) -> void:
 	for index in range(3):
 		var y := size.y * (0.3 + index * 0.16)
 		draw_circle(Vector2(size.x * 0.28, y), 6, ink)
 		draw_line(Vector2(size.x * 0.4, y), Vector2(size.x * 0.74, y), ink, 4)
 
 
-func _draw_graph(ink: Color, soft: Color) -> void:
+func _draw_graph(ink: Color, _soft: Color) -> void:
 	var a := Vector2(size.x * 0.28, size.y * 0.64)
 	var b := Vector2(size.x * 0.5, size.y * 0.3)
 	var c := Vector2(size.x * 0.72, size.y * 0.64)
@@ -118,26 +118,26 @@ func _draw_graph(ink: Color, soft: Color) -> void:
 	draw_circle(c, 8, ink)
 
 
-func _draw_api(ink: Color, soft: Color) -> void:
+func _draw_api(ink: Color, _soft: Color) -> void:
 	draw_circle(Vector2(size.x * 0.32, size.y * 0.5), 14, ink)
 	draw_circle(Vector2(size.x * 0.68, size.y * 0.5), 14, ink)
 	draw_line(Vector2(size.x * 0.42, size.y * 0.5), Vector2(size.x * 0.58, size.y * 0.5), ink, 6)
 	draw_line(Vector2(size.x * 0.5, size.y * 0.34), Vector2(size.x * 0.5, size.y * 0.66), ink, 4)
 
 
-func _draw_cloud(ink: Color, soft: Color) -> void:
+func _draw_cloud(ink: Color, _soft: Color) -> void:
 	draw_circle(Vector2(size.x * 0.36, size.y * 0.54), 18, ink)
 	draw_circle(Vector2(size.x * 0.52, size.y * 0.44), 24, ink)
 	draw_circle(Vector2(size.x * 0.66, size.y * 0.56), 16, ink)
 	draw_rect(Rect2(size.x * 0.32, size.y * 0.54, size.x * 0.38, size.y * 0.14), ink)
 
 
-func _draw_mobile(ink: Color, soft: Color) -> void:
+func _draw_mobile(ink: Color, _soft: Color) -> void:
 	draw_rect(Rect2(size.x * 0.36, size.y * 0.18, size.x * 0.28, size.y * 0.64), ink, false, 5)
 	draw_circle(Vector2(size.x * 0.5, size.y * 0.74), 4, ink)
 
 
-func _draw_security(ink: Color, soft: Color) -> void:
+func _draw_security(ink: Color, _soft: Color) -> void:
 	var points := PackedVector2Array([
 		Vector2(size.x * 0.5, size.y * 0.18),
 		Vector2(size.x * 0.72, size.y * 0.3),
@@ -149,7 +149,7 @@ func _draw_security(ink: Color, soft: Color) -> void:
 	draw_polygon(points, PackedColorArray([ink]))
 
 
-func _draw_oss(ink: Color, soft: Color) -> void:
+func _draw_oss(ink: Color, _soft: Color) -> void:
 	var top := Vector2(size.x * 0.5, size.y * 0.24)
 	var left := Vector2(size.x * 0.34, size.y * 0.64)
 	var right := Vector2(size.x * 0.66, size.y * 0.64)
@@ -160,7 +160,7 @@ func _draw_oss(ink: Color, soft: Color) -> void:
 	draw_circle(right, 8, ink)
 
 
-func _draw_accessibility(ink: Color, soft: Color) -> void:
+func _draw_accessibility(ink: Color, _soft: Color) -> void:
 	draw_circle(Vector2(size.x * 0.5, size.y * 0.24), 8, ink)
 	draw_line(Vector2(size.x * 0.26, size.y * 0.4), Vector2(size.x * 0.74, size.y * 0.4), ink, 5)
 	draw_line(Vector2(size.x * 0.5, size.y * 0.34), Vector2(size.x * 0.5, size.y * 0.72), ink, 5)
@@ -168,12 +168,12 @@ func _draw_accessibility(ink: Color, soft: Color) -> void:
 	draw_line(Vector2(size.x * 0.5, size.y * 0.52), Vector2(size.x * 0.68, size.y * 0.76), ink, 5)
 
 
-func _draw_chat(ink: Color, soft: Color) -> void:
+func _draw_chat(ink: Color, _soft: Color) -> void:
 	draw_rect(Rect2(size.x * 0.22, size.y * 0.28, size.x * 0.42, size.y * 0.26), ink, false, 4)
 	draw_rect(Rect2(size.x * 0.36, size.y * 0.5, size.x * 0.42, size.y * 0.26), ink, false, 4)
 
 
-func _draw_product(ink: Color, soft: Color) -> void:
+func _draw_product(ink: Color, _soft: Color) -> void:
 	draw_rect(Rect2(size.x * 0.28, size.y * 0.28, size.x * 0.44, size.y * 0.44), ink, false, 4)
 	draw_line(Vector2(size.x * 0.34, size.y * 0.5), Vector2(size.x * 0.46, size.y * 0.62), ink, 4)
 	draw_line(Vector2(size.x * 0.46, size.y * 0.62), Vector2(size.x * 0.68, size.y * 0.38), ink, 4)

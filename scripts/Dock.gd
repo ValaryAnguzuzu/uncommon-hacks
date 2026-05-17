@@ -48,7 +48,7 @@ func _ready() -> void:
 
 func refresh_alerts() -> void:
 	# A dock alert should be obvious without blocking the player.
-	var unlocked_count := PlayerState.unlocked_interviews.size()
+	var unlocked_count := PlayerState.new_interview_alerts.size()
 	var should_alert := unlocked_count > 0
 
 	interview_alert_badge.visible = should_alert
