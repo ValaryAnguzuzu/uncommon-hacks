@@ -16,6 +16,8 @@ const BASE_SCORE_REWARD := 20
 const BASE_RESUME_SCORE_REWARD := 25
 const BASE_BURNOUT_COST := 7
 
+@onready var close_dot: Button = $OuterMargin/WindowStack/TitleBar/WindowControls/CloseDot
+@onready var zoom_dot: Button = $OuterMargin/WindowStack/TitleBar/WindowControls/ZoomDot
 @onready var close_button: Button = $OuterMargin/WindowStack/TitleBar/CloseButton
 @onready var project_grid: GridContainer = $OuterMargin/WindowStack/BodyPanel/BodyStack/ScrollContainer/ProjectGrid
 
@@ -23,7 +25,13 @@ var projects: Array = []
 var rolled_keywords: Dictionary = {}
 
 
+var _is_expanded: bool = false
+var _saved_offsets: Vector4 = Vector4.ZERO
+
+
 func _ready() -> void:
+	close_dot.pressed.connect(_on_close_button_pressed)
+	zoom_dot.pressed.connect(func(): _toggle_expand())
 	close_button.pressed.connect(_on_close_button_pressed)
 
 	var refresh_callable := Callable(self, "refresh")
@@ -221,6 +229,29 @@ func _make_chip_style() -> StyleBoxFlat:
 func _clear_container(container: Container) -> void:
 	for child in container.get_children():
 		child.free()
+
+
+func _toggle_expand() -> void:
+	if not _is_expanded:
+		_saved_offsets = Vector4(offset_left, offset_top, offset_right, offset_bottom)
+		anchor_left = 0.0
+		anchor_top = 0.0
+		anchor_right = 1.0
+		anchor_bottom = 1.0
+		offset_left = 8.0
+		offset_top = 40.0
+		offset_right = -8.0
+		offset_bottom = -76.0
+	else:
+		anchor_left = 0.0
+		anchor_top = 0.0
+		anchor_right = 0.0
+		anchor_bottom = 0.0
+		offset_left = _saved_offsets.x
+		offset_top = _saved_offsets.y
+		offset_right = _saved_offsets.z
+		offset_bottom = _saved_offsets.w
+	_is_expanded = not _is_expanded
 
 
 func _on_close_button_pressed() -> void:

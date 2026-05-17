@@ -1,51 +1,152 @@
-[gd_scene format=3 uid="uid://pjx1dk68f1xh"]
+[gd_scene load_steps=7 format=3 uid="uid://pjx1dk68f1xh"]
+
+[ext_resource type="Script" path="res://scripts/InterviewWindow.gd" id="1_interview_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window"]
+bg_color = Color(0.92549, 0.937255, 0.956863, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.54, 0.58, 0.66, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_body"]
+bg_color = Color(0.985, 0.988, 0.992, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.78, 0.81, 0.86, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dot_green"]
+bg_color = Color(0.219608, 0.760784, 0.396078, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dot_red"]
+bg_color = Color(0.937255, 0.337255, 0.301961, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dot_yellow"]
+bg_color = Color(0.94902, 0.694118, 0.247059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="InterviewWindow" type="PanelContainer"]
-custom_minimum_size = Vector2(520, 420)
+custom_minimum_size = Vector2(620, 500)
 layout_mode = 3
 offset_left = 260.0
 offset_top = 120.0
-offset_right = 780.0
-offset_bottom = 540.0
+offset_right = 880.0
+offset_bottom = 620.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_window")
+script = ExtResource("1_interview_script")
 
-[node name="Content" type="VBoxContainer" parent="."]
+[node name="OuterMargin" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
 
-[node name="TitleBar" type="HBoxContainer" parent="Content"]
+[node name="WindowStack" type="VBoxContainer" parent="OuterMargin"]
 layout_mode = 2
+theme_override_constants/separation = 12
 
-[node name="TitleLabel" type="Label" parent="Content/TitleBar"]
+[node name="TitleBar" type="HBoxContainer" parent="OuterMargin/WindowStack"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="WindowDots" type="HBoxContainer" parent="OuterMargin/WindowStack/TitleBar"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CloseDot" type="Button" parent="OuterMargin/WindowStack/TitleBar/WindowDots"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+text = ""
+theme_override_styles/normal = SubResource("StyleBoxFlat_dot_red")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dot_red")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dot_red")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dot_red")
+
+[node name="MinimizeDot" type="PanelContainer" parent="OuterMargin/WindowStack/TitleBar/WindowDots"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dot_yellow")
+
+[node name="ZoomDot" type="Button" parent="OuterMargin/WindowStack/TitleBar/WindowDots"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+text = ""
+theme_override_styles/normal = SubResource("StyleBoxFlat_dot_green")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dot_green")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dot_green")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dot_green")
+
+[node name="TitleLabel" type="Label" parent="OuterMargin/WindowStack/TitleBar"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Interview"
+text = "Interview Console"
+theme_override_colors/font_color = Color(0.08, 0.10, 0.14, 1)
 
-[node name="CloseButton" type="Button" parent="Content/TitleBar"]
+[node name="CloseButton" type="Button" parent="OuterMargin/WindowStack/TitleBar"]
 layout_mode = 2
 text = "X"
 
-[node name="LockedLabel" type="Label" parent="Content"]
+[node name="BodyPanel" type="PanelContainer" parent="OuterMargin/WindowStack"]
 layout_mode = 2
-text = "No interviews available."
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_body")
 
-[node name="QuestionLabel" type="Label" parent="Content"]
+[node name="BodyMargin" type="MarginContainer" parent="OuterMargin/WindowStack/BodyPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="BodyStack" type="VBoxContainer" parent="OuterMargin/WindowStack/BodyPanel/BodyMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HeaderLabel" type="Label" parent="OuterMargin/WindowStack/BodyPanel/BodyMargin/BodyStack"]
+layout_mode = 2
+text = "Pending recruiter screens"
+theme_override_colors/font_color = Color(0.08, 0.10, 0.14, 1)
+
+[node name="FocusLabel" type="Label" parent="OuterMargin/WindowStack/BodyPanel/BodyMargin/BodyStack"]
 layout_mode = 2
 autowrap_mode = 3
-text = "Question will appear here."
+text = "Apply to strong matches on the Job Board to unlock interviews."
+theme_override_colors/font_color = Color(0.30, 0.35, 0.42, 1)
 
-[node name="AnswerAButton" type="Button" parent="Content"]
-layout_mode = 2
-text = "Answer A"
-
-[node name="AnswerBButton" type="Button" parent="Content"]
-layout_mode = 2
-text = "Answer B"
-
-[node name="AnswerCButton" type="Button" parent="Content"]
-layout_mode = 2
-text = "Answer C"
-
-[node name="FeedbackLabel" type="Label" parent="Content"]
+[node name="EmptyStateLabel" type="Label" parent="OuterMargin/WindowStack/BodyPanel/BodyMargin/BodyStack"]
 layout_mode = 2
 autowrap_mode = 3
-text = "Feedback will appear here."
+text = "No interviews yet. Ship projects, tune your resume keywords, and apply when a job card says Interview Ready."
+theme_override_colors/font_color = Color(0.36, 0.40, 0.48, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="OuterMargin/WindowStack/BodyPanel/BodyMargin/BodyStack"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InterviewList" type="VBoxContainer" parent="OuterMargin/WindowStack/BodyPanel/BodyMargin/BodyStack/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10

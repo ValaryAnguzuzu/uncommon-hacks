@@ -11,6 +11,8 @@ extends PanelContainer
 
 const JOBS_PATH := "res://data/jobs.json"
 
+@onready var close_dot: Button = $OuterMargin/WindowStack/TitleBar/WindowControls/CloseDot
+@onready var zoom_dot: Button = $OuterMargin/WindowStack/TitleBar/WindowControls/ZoomDot
 @onready var close_button: Button = $OuterMargin/WindowStack/TitleBar/CloseButton
 @onready var resume_keywords_label: Label = $OuterMargin/WindowStack/BodyPanel/BodyStack/HeaderRow/ResumeKeywordsLabel
 @onready var jobs_list: VBoxContainer = $OuterMargin/WindowStack/BodyPanel/BodyStack/ScrollContainer/JobsList
@@ -18,7 +20,13 @@ const JOBS_PATH := "res://data/jobs.json"
 var jobs: Array = []
 
 
+var _is_expanded: bool = false
+var _saved_offsets: Vector4 = Vector4.ZERO
+
+
 func _ready() -> void:
+	close_dot.pressed.connect(_on_close_button_pressed)
+	zoom_dot.pressed.connect(func(): _toggle_expand())
 	close_button.pressed.connect(_on_close_button_pressed)
 
 	var refresh_callable := Callable(self, "refresh")
@@ -64,7 +72,7 @@ func _make_job_card(job: Dictionary) -> PanelContainer:
 	var interview_unlocked := job_id in PlayerState.unlocked_interviews
 
 	var card := PanelContainer.new()
-	card.add_theme_stylebox_override("panel", _make_card_style(can_apply, applied))
+	card.add_theme_stylebox_override("panel", _make_card_style(can_apply, applied, interview_unlocked))
 
 	var margin := MarginContainer.new()
 	margin.add_theme_constant_override("margin_left", 12)
@@ -254,7 +262,7 @@ func _match_color(match_score: int, threshold: int) -> Color:
 	return Color(0.55, 0.18, 0.16)
 
 
-func _make_card_style(can_apply: bool, applied: bool) -> StyleBoxFlat:
+func _make_card_style(can_apply: bool, applied: bool, interview_unlocked: bool) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.90, 0.94, 0.91) if can_apply else Color(0.95, 0.96, 0.98)
 	style.border_color = Color(0.32, 0.62, 0.48) if can_apply else Color(0.72, 0.76, 0.82)
@@ -262,6 +270,10 @@ func _make_card_style(can_apply: bool, applied: bool) -> StyleBoxFlat:
 	if applied:
 		style.bg_color = Color(0.89, 0.92, 0.96)
 		style.border_color = Color(0.38, 0.48, 0.64)
+
+	if interview_unlocked:
+		style.bg_color = Color(0.86, 0.96, 0.89)
+		style.border_color = Color(0.15, 0.56, 0.32)
 
 	style.border_width_left = 1
 	style.border_width_top = 1
@@ -297,6 +309,29 @@ func _make_chip_style(owned: bool, required: bool) -> StyleBoxFlat:
 func _clear_container(container: Container) -> void:
 	for child in container.get_children():
 		child.free()
+
+
+func _toggle_expand() -> void:
+	if not _is_expanded:
+		_saved_offsets = Vector4(offset_left, offset_top, offset_right, offset_bottom)
+		anchor_left = 0.0
+		anchor_top = 0.0
+		anchor_right = 1.0
+		anchor_bottom = 1.0
+		offset_left = 8.0
+		offset_top = 40.0
+		offset_right = -8.0
+		offset_bottom = -76.0
+	else:
+		anchor_left = 0.0
+		anchor_top = 0.0
+		anchor_right = 0.0
+		anchor_bottom = 0.0
+		offset_left = _saved_offsets.x
+		offset_top = _saved_offsets.y
+		offset_right = _saved_offsets.z
+		offset_bottom = _saved_offsets.w
+	_is_expanded = not _is_expanded
 
 
 func _on_close_button_pressed() -> void:
