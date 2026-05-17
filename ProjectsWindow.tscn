@@ -96,20 +96,28 @@ theme_override_constants/separation = 10
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="CloseDot" type="PanelContainer" parent="OuterMargin/WindowStack/TitleBar/WindowControls"]
+[node name="CloseDot" type="Button" parent="OuterMargin/WindowStack/TitleBar/WindowControls"]
 custom_minimum_size = Vector2(12, 12)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_close_dot")
+text = ""
+theme_override_styles/normal = SubResource("StyleBoxFlat_close_dot")
+theme_override_styles/hover = SubResource("StyleBoxFlat_close_dot")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_close_dot")
+theme_override_styles/focus = SubResource("StyleBoxFlat_close_dot")
 
 [node name="MinimizeDot" type="PanelContainer" parent="OuterMargin/WindowStack/TitleBar/WindowControls"]
 custom_minimum_size = Vector2(12, 12)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_minimize_dot")
 
-[node name="ZoomDot" type="PanelContainer" parent="OuterMargin/WindowStack/TitleBar/WindowControls"]
+[node name="ZoomDot" type="Button" parent="OuterMargin/WindowStack/TitleBar/WindowControls"]
 custom_minimum_size = Vector2(12, 12)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_zoom_dot")
+text = ""
+theme_override_styles/normal = SubResource("StyleBoxFlat_zoom_dot")
+theme_override_styles/hover = SubResource("StyleBoxFlat_zoom_dot")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_zoom_dot")
+theme_override_styles/focus = SubResource("StyleBoxFlat_zoom_dot")
 
 [node name="TitleLabel" type="Label" parent="OuterMargin/WindowStack/TitleBar"]
 layout_mode = 2

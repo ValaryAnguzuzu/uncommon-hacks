@@ -27,6 +27,7 @@ extends Node
 
 # UI and managers can listen to this instead of polling every frame.
 signal state_changed
+signal interview_unlocked(job_id: String)
 
 # Money and debt
 @export var checking_balance: int = 500
@@ -50,6 +51,10 @@ signal state_changed
 @export var resume_score: int = 0
 @export var applications_sent: int = 0
 
+# Action points gate how many work actions the player can take per week.
+@export var action_points_per_week: int = 2
+@export var action_points_remaining: int = 2
+
 # Resume data is the player's "build" for job matching.
 var resume_keywords: Array[String] = ["Git"]
 var completed_projects: Array[String] = []
@@ -63,6 +68,7 @@ var active_project_id: String = ""
 var applied_jobs: Array[String] = []
 var viewed_jobs: Array[String] = []
 var unlocked_interviews: Array[String] = []
+var new_interview_alerts: Array[String] = []
 var active_interview_job_id: String = ""
 
 # Interview state tracks one active interview session at a time.
@@ -91,6 +97,7 @@ func reset_run() -> void:
 	score = 0
 	resume_score = 0
 	applications_sent = 0
+	action_points_remaining = action_points_per_week
 	resume_keywords = ["Git"]
 	completed_projects = []
 	active_interviews = []
@@ -99,6 +106,7 @@ func reset_run() -> void:
 	applied_jobs = []
 	viewed_jobs = []
 	unlocked_interviews = []
+	new_interview_alerts = []
 	active_interview_job_id = ""
 	current_interview_question_index = 0
 	current_interview_score = 0
@@ -194,11 +202,27 @@ func mark_job_viewed(job_id: String) -> void:
 
 func unlock_interview(job_id: String) -> void:
 	# Unlocking an interview also makes it available in active_interviews.
-	if job_id not in unlocked_interviews:
+	var is_new_unlock := job_id not in unlocked_interviews
+
+	if is_new_unlock:
 		unlocked_interviews.append(job_id)
 
+	if job_id not in new_interview_alerts:
+		new_interview_alerts.append(job_id)
+
 	add_active_interview(job_id)
-	active_interview_job_id = job_id
+	if is_new_unlock:
+		interview_unlocked.emit(job_id)
+	state_changed.emit()
+
+
+func acknowledge_interview_alerts() -> void:
+	# Opening the Interview app clears the dock/toast attention state without
+	# removing the actual unlocked interviews.
+	if new_interview_alerts.is_empty():
+		return
+
+	new_interview_alerts = []
 	state_changed.emit()
 
 
@@ -234,8 +258,14 @@ func set_loss(reason: String) -> void:
 	state_changed.emit()
 
 
+func spend_action_point() -> void:
+	action_points_remaining = maxi(action_points_remaining - 1, 0)
+	state_changed.emit()
+
+
 func advance_week() -> void:
-	# Reset idle timer at the start of each new week.
+	# Reset idle timer and action points at the start of each new week.
 	week_num += 1
 	idle_seconds_left = 30.0
+	action_points_remaining = action_points_per_week
 	state_changed.emit()
