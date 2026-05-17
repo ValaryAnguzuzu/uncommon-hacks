@@ -39,7 +39,8 @@ signal interview_unlocked(job_id: String)
 # Run progress controls the graduation timer and future idle pressure.
 @export var week_num: int = 1
 @export var max_weeks: int = 15
-@export var idle_seconds_left: float = 30.0
+@export var seconds_per_week: float = 75.0
+@export var idle_seconds_left: float = 75.0
 
 # Mental state; between 0 and 100.
 @export_range(0, 100) var burnout: int = 10
@@ -90,7 +91,7 @@ func reset_run() -> void:
 	debt_minimum_payment = 50
 	used_lifeline = false
 	week_num = 1
-	idle_seconds_left = 30.0
+	idle_seconds_left = seconds_per_week
 	burnout = 10
 	confidence = 50
 	interview_skill = 20
@@ -126,6 +127,11 @@ func add_money(amount: int) -> void:
 func spend_money(amount: int) -> void:
 	# This can make checking_balance negative; GameManager should decide loss.
 	checking_balance -= amount
+	state_changed.emit()
+
+
+func reduce_debt(amount: int) -> void:
+	debt = maxi(debt - amount, 0)
 	state_changed.emit()
 
 
@@ -234,6 +240,24 @@ func start_interview(job_id: String) -> void:
 	state_changed.emit()
 
 
+func finish_interview(job_id: String) -> void:
+	if job_id in active_interviews:
+		active_interviews.erase(job_id)
+
+	if job_id in unlocked_interviews:
+		unlocked_interviews.erase(job_id)
+
+	if job_id in new_interview_alerts:
+		new_interview_alerts.erase(job_id)
+
+	if active_interview_job_id == job_id:
+		active_interview_job_id = ""
+		current_interview_question_index = 0
+		current_interview_score = 0
+
+	state_changed.emit()
+
+
 func add_interview_score(amount: int) -> void:
 	current_interview_score += amount
 	state_changed.emit()
@@ -266,6 +290,6 @@ func spend_action_point() -> void:
 func advance_week() -> void:
 	# Reset idle timer and action points at the start of each new week.
 	week_num += 1
-	idle_seconds_left = 30.0
+	idle_seconds_left = seconds_per_week
 	action_points_remaining = action_points_per_week
 	state_changed.emit()

@@ -9,6 +9,32 @@ extends PanelContainer
 # - Opening this app already clears the dock alert through Desktop.gd; this window focuses on the queue.
 
 const JOBS_PATH := "res://data/jobs.json"
+const QUESTIONS := [
+	{
+		"prompt": "The recruiter asks: 'Walk me through a project you shipped.'",
+		"answers": [
+			{"text": "Name the problem, your specific choices, and what improved.", "score": 7, "feedback": "Strong. Specific evidence beats buzzwords."},
+			{"text": "List every framework you touched as fast as possible.", "score": 3, "feedback": "Some signal, but it sounds like a stack dump."},
+			{"text": "Say it was a school project and move on.", "score": 0, "feedback": "Too thin. They needed proof of ownership."}
+		]
+	},
+	{
+		"prompt": "They ask: 'What would you do if you got stuck for half a day?'",
+		"answers": [
+			{"text": "Debug, document attempts, ask a targeted question, then follow up.", "score": 7, "feedback": "Excellent. This sounds employable."},
+			{"text": "Keep grinding alone until it works.", "score": 2, "feedback": "Persistence is good, silence is expensive."},
+			{"text": "Switch tasks and hope it clears up.", "score": 1, "feedback": "Avoidance reads risky in an internship."}
+		]
+	},
+	{
+		"prompt": "Final question: 'Why this role?'",
+		"answers": [
+			{"text": "Connect their product, your projects, and the skills you want to grow.", "score": 7, "feedback": "Great close. You made the match feel intentional."},
+			{"text": "Say you need experience and are open to anything.", "score": 2, "feedback": "Honest, but it undersells you."},
+			{"text": "Mention the job market is rough.", "score": 0, "feedback": "Real, but not a closing argument."}
+		]
+	}
+]
 
 @onready var close_dot: Button = $OuterMargin/WindowStack/TitleBar/WindowDots/CloseDot
 @onready var zoom_dot: Button = $OuterMargin/WindowStack/TitleBar/WindowDots/ZoomDot
@@ -38,11 +64,18 @@ func _ready() -> void:
 func refresh() -> void:
 	_clear_container(interview_list)
 
-	var unlocked_ids := PlayerState.unlocked_interviews
+	var unlocked_ids: Array[String] = PlayerState.unlocked_interviews
 	empty_state_label.visible = unlocked_ids.is_empty()
 	focus_label.text = _focus_text()
 
+	if PlayerState.active_interview_job_id != "":
+		var active_job: Dictionary = jobs_by_id.get(PlayerState.active_interview_job_id, {})
+		interview_list.add_child(_make_question_card(PlayerState.active_interview_job_id, active_job))
+
 	for job_id in unlocked_ids:
+		if str(job_id) == PlayerState.active_interview_job_id:
+			continue
+
 		var job: Dictionary = jobs_by_id.get(job_id, {})
 		interview_list.add_child(_make_interview_card(str(job_id), job))
 
@@ -140,6 +173,70 @@ func _start_interview(job_id: String) -> void:
 	refresh()
 
 
+func _make_question_card(job_id: String, job: Dictionary) -> PanelContainer:
+	var question_index: int = clampi(PlayerState.current_interview_question_index, 0, QUESTIONS.size() - 1)
+	var question: Dictionary = QUESTIONS[question_index]
+
+	var card := PanelContainer.new()
+	card.add_theme_stylebox_override("panel", _make_card_style(true))
+
+	var margin := MarginContainer.new()
+	margin.add_theme_constant_override("margin_left", 14)
+	margin.add_theme_constant_override("margin_top", 12)
+	margin.add_theme_constant_override("margin_right", 14)
+	margin.add_theme_constant_override("margin_bottom", 12)
+
+	var stack := VBoxContainer.new()
+	stack.add_theme_constant_override("separation", 10)
+
+	var title_label := Label.new()
+	title_label.text = "Live screen: %s at %s" % [str(job.get("title", "Interview")), str(job.get("company", "Unknown Company"))]
+	title_label.add_theme_color_override("font_color", Color(0.05, 0.07, 0.10))
+
+	var progress_label := Label.new()
+	progress_label.text = "Question %s / %s   Score %s" % [
+		question_index + 1,
+		QUESTIONS.size(),
+		PlayerState.current_interview_score
+	]
+	progress_label.add_theme_color_override("font_color", Color(0.30, 0.35, 0.42))
+
+	var prompt_label := Label.new()
+	prompt_label.text = str(question.get("prompt", "Question"))
+	prompt_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	prompt_label.add_theme_color_override("font_color", Color(0.14, 0.17, 0.22))
+
+	stack.add_child(title_label)
+	stack.add_child(progress_label)
+	stack.add_child(prompt_label)
+
+	var answers: Array = question.get("answers", [])
+	for answer in answers:
+		var answer_data: Dictionary = answer as Dictionary
+		var button := Button.new()
+		button.text = str(answer_data.get("text", "Answer"))
+		button.pressed.connect(func(): _answer_question(job_id, answer_data))
+		stack.add_child(button)
+
+	margin.add_child(stack)
+	card.add_child(margin)
+	return card
+
+
+func _answer_question(job_id: String, answer: Dictionary) -> void:
+	PlayerState.add_interview_score(int(answer.get("score", 0)))
+	focus_label.text = str(answer.get("feedback", ""))
+
+	if PlayerState.current_interview_question_index >= QUESTIONS.size() - 1:
+		var manager: Node = _game_manager()
+		if manager != null:
+			manager.call("resolve_interview", job_id, PlayerState.current_interview_score)
+		return
+
+	PlayerState.advance_interview_question()
+	refresh()
+
+
 func _focus_text() -> String:
 	if PlayerState.unlocked_interviews.is_empty():
 		return "Apply to strong matches on the Job Board to unlock interviews."
@@ -208,3 +305,7 @@ func _toggle_expand() -> void:
 
 func _on_close_button_pressed() -> void:
 	hide()
+
+
+func _game_manager() -> Node:
+	return get_node_or_null("/root/GameManager")

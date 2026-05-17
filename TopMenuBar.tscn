@@ -1,48 +1,180 @@
-[gd_scene load_steps=2 format=3 uid="uid://8nn8bvi5c7vw"]
+[gd_scene load_steps=9 format=3 uid="uid://8nn8bvi5c7vw"]
 
 [ext_resource type="Script" path="res://scripts/TopMenuBar.gd" id="1_top_menu_script"]
+[ext_resource type="Texture2D" path="res://assets/coins.png" id="2_coin_texture"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud_panel"]
+bg_color = Color(0.0352941, 0.0431373, 0.0588235, 0.96)
+border_width_bottom = 1
+border_color = Color(0.2, 0.235294, 0.286275, 1)
+content_margin_left = 14
+content_margin_top = 8
+content_margin_right = 14
+content_margin_bottom = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stat_card"]
+bg_color = Color(0.0862745, 0.101961, 0.129412, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.203922, 0.239216, 0.298039, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 9
+content_margin_top = 5
+content_margin_right = 9
+content_margin_bottom = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_end_week"]
+bg_color = Color(0.835294, 0.309804, 0.235294, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.568627, 0.419608, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 14
+content_margin_right = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_end_week_hover"]
+bg_color = Color(0.960784, 0.392157, 0.286275, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.705882, 0.545098, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 14
+content_margin_right = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_end_week_pressed"]
+bg_color = Color(0.501961, 0.141176, 0.117647, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.741176, 0.247059, 0.192157, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 14
+content_margin_right = 14
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coin"]
+atlas = ExtResource("2_coin_texture")
+region = Rect2(0, 0, 96, 96)
 
 [node name="TopMenuBar" type="PanelContainer"]
-custom_minimum_size = Vector2(0, 36)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 36.0
+offset_bottom = 64.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud_panel")
 script = ExtResource("1_top_menu_script")
 
-[node name="StatsRow" type="HBoxContainer" parent="."]
+[node name="HudRow" type="HBoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 12
 
-[node name="WeekLabel" type="Label" parent="StatsRow"]
+[node name="IdentityStack" type="VBoxContainer" parent="HudRow"]
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
-text = "Week 1"
+theme_override_constants/separation = 2
 
-[node name="MoneyLabel" type="Label" parent="StatsRow"]
+[node name="GameTitleLabel" type="Label" parent="HudRow/IdentityStack"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.278431, 0.94902, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "S/S"
+horizontal_alignment = 1
+
+[node name="ObjectiveLabel" type="Label" parent="HudRow/IdentityStack"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.682353, 0.784314, 1)
+text = ""
+
+[node name="StatsRow" type="HBoxContainer" parent="HudRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="WeekCard" type="PanelContainer" parent="HudRow/StatsRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat_card")
+
+[node name="WeekLabel" type="Label" parent="HudRow/StatsRow/WeekCard"]
+layout_mode = 2
+text = "Week 1/15"
+
+[node name="MoneyCard" type="PanelContainer" parent="HudRow/StatsRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat_card")
+
+[node name="MoneyLabel" type="Label" parent="HudRow/StatsRow/MoneyCard"]
 layout_mode = 2
 text = "$500"
 
-[node name="DebtLabel" type="Label" parent="StatsRow"]
+[node name="DebtCard" type="PanelContainer" parent="HudRow/StatsRow"]
 layout_mode = 2
-text = "Debt $0"
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat_card")
 
-[node name="BurnoutLabel" type="Label" parent="StatsRow"]
+[node name="DebtLabel" type="Label" parent="HudRow/StatsRow/DebtCard"]
+layout_mode = 2
+text = "Debt $1200"
+
+[node name="BurnoutCard" type="PanelContainer" parent="HudRow/StatsRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat_card")
+
+[node name="BurnoutLabel" type="Label" parent="HudRow/StatsRow/BurnoutCard"]
 layout_mode = 2
 text = "Burnout 10%"
 
-[node name="ConfidenceLabel" type="Label" parent="StatsRow"]
+[node name="ConfidenceCard" type="PanelContainer" parent="HudRow/StatsRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat_card")
+
+[node name="ConfidenceLabel" type="Label" parent="HudRow/StatsRow/ConfidenceCard"]
 layout_mode = 2
 text = "Confidence 50%"
 
-[node name="InterviewSkillLabel" type="Label" parent="StatsRow"]
+[node name="InterviewCard" type="PanelContainer" parent="HudRow/StatsRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat_card")
+
+[node name="InterviewSkillLabel" type="Label" parent="HudRow/StatsRow/InterviewCard"]
 layout_mode = 2
 text = "Interview 20%"
 
-[node name="ScoreLabel" type="Label" parent="StatsRow"]
+[node name="ScoreCard" type="PanelContainer" parent="HudRow/StatsRow"]
 layout_mode = 2
-text = "Score 0"
+theme_override_styles/panel = SubResource("StyleBoxFlat_stat_card")
 
-[node name="EndWeekButton" type="Button" parent="StatsRow"]
+[node name="ScoreRow" type="HBoxContainer" parent="HudRow/StatsRow/ScoreCard"]
 layout_mode = 2
-text = "End Week"
+theme_override_constants/separation = 6
+
+[node name="CoinIcon" type="TextureRect" parent="HudRow/StatsRow/ScoreCard/ScoreRow"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 2
+texture = SubResource("AtlasTexture_coin")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScoreLabel" type="Label" parent="HudRow/StatsRow/ScoreCard/ScoreRow"]
+layout_mode = 2
+text = "Coins 0"
