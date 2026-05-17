@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjfel2in07qjm"]
+[gd_scene load_steps=4 format=3 uid="uid://cjfel2in07qjm"]
 
 [ext_resource type="PackedScene" path="res://TopMenuBar.tscn" id="1_top_menu_bar"]
 [ext_resource type="PackedScene" path="res://Dock.tscn" id="2_dock"]
+[ext_resource type="Script" path="res://scripts/Desktop.gd" id="3_desktop_script"]
 
 [node name="Desktop" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_desktop_script")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

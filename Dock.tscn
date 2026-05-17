@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dj4qvp67hcnbi"]
+[gd_scene load_steps=2 format=3 uid="uid://dj4qvp67hcnbi"]
+
+[ext_resource type="Script" path="res://scripts/Dock.gd" id="1_dock_script"]
 
 [node name="Dock" type="PanelContainer"]
 custom_minimum_size = Vector2(0, 72)
@@ -10,6 +12,7 @@ anchor_bottom = 1.0
 offset_top = -72.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("1_dock_script")
 
 [node name="DockRow" type="HBoxContainer" parent="."]
 layout_mode = 2
