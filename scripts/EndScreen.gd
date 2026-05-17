@@ -52,7 +52,7 @@ func _title_text() -> String:
 		return "YOU GOT HIRED."
 
 	if PlayerState.lose_reason.to_lower().contains("checking"):
-		return "HOMELESS."
+		return "CRIPPLING DEBT."
 
 	if PlayerState.lose_reason.to_lower().contains("graduation"):
 		return "GRADUATED BROKE."
