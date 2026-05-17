@@ -39,7 +39,7 @@ signal interview_unlocked(job_id: String)
 # Run progress controls the graduation timer and future idle pressure.
 @export var week_num: int = 1
 @export var max_weeks: int = 15
-@export var seconds_per_week: float = 75.0
+@export var seconds_per_week: float = 157.5
 @export var idle_seconds_left: float = 75.0
 
 # Mental state; between 0 and 100.
