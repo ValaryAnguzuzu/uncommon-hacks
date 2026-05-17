@@ -28,7 +28,6 @@ mouse_filter = 2
 
 [node name="Dock" parent="." unique_id=223293515 instance=ExtResource("2_dock")]
 layout_mode = 1
-offset_top = -44.0
 script = null
 
 [node name="ToastLayer" type="Control" parent="." unique_id=1506575902]
@@ -48,6 +47,6 @@ anchor_right = 1.0
 anchor_bottom = 0.90000004
 offset_top = 0.3999977
 offset_right = -1.0
-offset_bottom = -4.0
+offset_bottom = 35.0
 texture = ExtResource("4_l4poe")
 expand_mode = 1
