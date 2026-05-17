@@ -1,0 +1,66 @@
+[
+  {
+    "id": "frontend_intern",
+    "title": "Frontend Engineering Intern",
+    "company": "BrightDock",
+    "match_threshold": 60,
+    "required_keywords": ["React", "UI", "Frontend", "Accessibility", "Git"],
+    "nice_to_have_keywords": ["Design", "Responsive", "Figma", "Testing"]
+  },
+  {
+    "id": "backend_intern",
+    "title": "Backend Engineering Intern",
+    "company": "RelayStack",
+    "match_threshold": 65,
+    "required_keywords": ["Backend", "API", "Database", "Testing", "Git"],
+    "nice_to_have_keywords": ["Docker", "REST", "Logging", "Validation"]
+  },
+  {
+    "id": "full_stack_intern",
+    "title": "Full Stack Intern",
+    "company": "CampusCart",
+    "match_threshold": 70,
+    "required_keywords": ["Full Stack", "Frontend", "Backend", "Database", "Auth"],
+    "nice_to_have_keywords": ["Product", "UX", "Deployment", "Search"]
+  },
+  {
+    "id": "data_analyst_intern",
+    "title": "Data Analyst Intern",
+    "company": "MetricHouse",
+    "match_threshold": 60,
+    "required_keywords": ["SQL", "Data", "Dashboard", "Analytics"],
+    "nice_to_have_keywords": ["Python", "Pandas", "Visualization", "Reports"]
+  },
+  {
+    "id": "ai_product_intern",
+    "title": "AI Product Intern",
+    "company": "Promptly",
+    "match_threshold": 68,
+    "required_keywords": ["AI", "Product", "Python", "UX"],
+    "nice_to_have_keywords": ["LLM", "Prompting", "Evaluation", "OpenAI"]
+  },
+  {
+    "id": "devops_cloud_intern",
+    "title": "Cloud/DevOps Intern",
+    "company": "Shipyard Systems",
+    "match_threshold": 72,
+    "required_keywords": ["Cloud", "Docker", "Deployment", "Linux"],
+    "nice_to_have_keywords": ["AWS", "CI/CD", "Monitoring", "GitHub Actions"]
+  },
+  {
+    "id": "mobile_intern",
+    "title": "Mobile App Intern",
+    "company": "LoopHabit",
+    "match_threshold": 62,
+    "required_keywords": ["Mobile", "React Native", "UI", "Testing"],
+    "nice_to_have_keywords": ["Notifications", "Local Storage", "Accessibility", "Product"]
+  },
+  {
+    "id": "mcdonalds",
+    "title": "Crew Member",
+    "company": "McDonald's",
+    "match_threshold": 5,
+    "required_keywords": ["Communication"],
+    "nice_to_have_keywords": ["Scheduling", "Organization", "Follow-up"]
+  }
+]
