@@ -178,9 +178,9 @@ func _add_project_card(parent: VBoxContainer, title: String, body: String, detai
 	var stack := VBoxContainer.new()
 	stack.add_theme_constant_override("separation", 3)
 
-	var title_label := Label.new()
-	title_label.text = title
-	title_label.add_theme_color_override("font_color", Color(0.08, 0.1, 0.13))
+	var card_title := Label.new()
+	card_title.text = title
+	card_title.add_theme_color_override("font_color", Color(0.08, 0.1, 0.13))
 
 	var body_label := Label.new()
 	body_label.text = body
@@ -192,7 +192,7 @@ func _add_project_card(parent: VBoxContainer, title: String, body: String, detai
 	detail_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	detail_label.add_theme_color_override("font_color", Color(0.36, 0.42, 0.49))
 
-	stack.add_child(title_label)
+	stack.add_child(card_title)
 	stack.add_child(body_label)
 	stack.add_child(detail_label)
 	margin.add_child(stack)
