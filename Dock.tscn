@@ -1,6 +1,105 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj4qvp67hcnbi"]
+[gd_scene load_steps=10 format=3 uid="uid://dj4qvp67hcnbi"]
 
 [ext_resource type="Script" path="res://scripts/Dock.gd" id="1_dock_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_taskbar_panel"]
+bg_color = Color(0.0431373, 0.254902, 0.745098, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.270588, 0.545098, 1, 1)
+border_blend = true
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_right = 0
+corner_radius_bottom_left = 0
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 10.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_start_normal"]
+bg_color = Color(0.192157, 0.615686, 0.113725, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.552941, 0.894118, 0.356863, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 18
+content_margin_left = 16.0
+content_margin_right = 18.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_start_hover"]
+bg_color = Color(0.278431, 0.713725, 0.156863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.741176, 1, 0.505882, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 18
+content_margin_left = 16.0
+content_margin_right = 18.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_start_pressed"]
+bg_color = Color(0.0980392, 0.419608, 0.0705882, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0666667, 0.239216, 0.0509804, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 18
+content_margin_left = 16.0
+content_margin_right = 18.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_task_button_normal"]
+bg_color = Color(0.109804, 0.360784, 0.898039, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.466667, 0.678431, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 10.0
+content_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_task_button_hover"]
+bg_color = Color(0.180392, 0.454902, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.709804, 0.843137, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 10.0
+content_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_task_button_pressed"]
+bg_color = Color(0.0313726, 0.180392, 0.537255, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0156863, 0.109804, 0.352941, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 10.0
+content_margin_right = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alert_badge"]
 bg_color = Color(0.137255, 0.690196, 0.376471, 1)
@@ -8,56 +107,114 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-content_margin_left = 5
-content_margin_top = 1
-content_margin_right = 5
-content_margin_bottom = 1
+content_margin_left = 5.0
+content_margin_top = 1.0
+content_margin_right = 5.0
+content_margin_bottom = 1.0
 
 [node name="Dock" type="PanelContainer"]
-custom_minimum_size = Vector2(0, 72)
+custom_minimum_size = Vector2(0, 44)
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -72.0
+offset_top = -44.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_taskbar_panel")
 script = ExtResource("1_dock_script")
 
 [node name="DockRow" type="HBoxContainer" parent="."]
 layout_mode = 2
-alignment = 1
-theme_override_constants/separation = 12
+theme_override_constants/separation = 6
+
+[node name="StartButton" type="Button" parent="DockRow"]
+custom_minimum_size = Vector2(92, 32)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_start_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_start_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_start_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_start_hover")
+text = "start"
+
+[node name="TaskSeparator" type="VSeparator" parent="DockRow"]
+layout_mode = 2
 
 [node name="ResumeButton" type="Button" parent="DockRow"]
-custom_minimum_size = Vector2(96, 48)
+custom_minimum_size = Vector2(112, 32)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_task_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_task_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_task_button_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_task_button_hover")
 text = "Resume"
 
 [node name="WorkButton" type="Button" parent="DockRow"]
-custom_minimum_size = Vector2(96, 48)
+custom_minimum_size = Vector2(112, 32)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_task_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_task_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_task_button_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_task_button_hover")
 text = "Work"
 
 [node name="PrepButton" type="Button" parent="DockRow"]
-custom_minimum_size = Vector2(96, 48)
+custom_minimum_size = Vector2(112, 32)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_task_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_task_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_task_button_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_task_button_hover")
 text = "Prep"
 
 [node name="ProjectsButton" type="Button" parent="DockRow"]
-custom_minimum_size = Vector2(96, 48)
+custom_minimum_size = Vector2(112, 32)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_task_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_task_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_task_button_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_task_button_hover")
 text = "Projects"
 
 [node name="JobsButton" type="Button" parent="DockRow"]
-custom_minimum_size = Vector2(96, 48)
+custom_minimum_size = Vector2(112, 32)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_task_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_task_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_task_button_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_task_button_hover")
 text = "Jobs"
 
 [node name="InterviewButton" type="Button" parent="DockRow"]
-custom_minimum_size = Vector2(96, 48)
+custom_minimum_size = Vector2(112, 32)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_task_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_task_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_task_button_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_task_button_hover")
 text = "Interview"
 
 [node name="InterviewAlertBadge" type="PanelContainer" parent="DockRow/InterviewButton"]
@@ -72,7 +229,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_alert_badge")
 
 [node name="CountLabel" type="Label" parent="DockRow/InterviewButton/InterviewAlertBadge"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "!"
 horizontal_alignment = 1
 vertical_alignment = 1
-theme_override_colors/font_color = Color(1, 1, 1, 1)
