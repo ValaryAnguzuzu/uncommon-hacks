@@ -209,7 +209,7 @@ func _place_window(window: Control, app_id: String) -> void:
 	window.position = _clamp_window_position(base_position + stagger, window_size)
 
 
-func _clamp_window_position(position: Vector2, window_size: Vector2) -> Vector2:
+func _clamp_window_position(desired_position: Vector2, window_size: Vector2) -> Vector2:
 	var visible_size: Vector2 = window_layer.size
 	var max_position: Vector2 = Vector2(
 		max(WINDOW_MARGIN.x, visible_size.x - window_size.x - WINDOW_MARGIN.x),
@@ -217,8 +217,8 @@ func _clamp_window_position(position: Vector2, window_size: Vector2) -> Vector2:
 	)
 
 	return Vector2(
-		clampf(position.x, WINDOW_MARGIN.x, max_position.x),
-		clampf(position.y, WINDOW_MARGIN.y, max_position.y)
+		clampf(desired_position.x, WINDOW_MARGIN.x, max_position.x),
+		clampf(desired_position.y, WINDOW_MARGIN.y, max_position.y)
 	)
 
 

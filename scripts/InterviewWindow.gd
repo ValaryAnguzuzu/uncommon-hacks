@@ -277,7 +277,7 @@ func _join_strings(values: Array) -> String:
 
 func _clear_container(container: Container) -> void:
 	for child in container.get_children():
-		child.free()
+		child.queue_free()
 
 
 func _toggle_expand() -> void:

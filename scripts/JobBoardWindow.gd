@@ -308,7 +308,7 @@ func _make_chip_style(owned: bool, required: bool) -> StyleBoxFlat:
 
 func _clear_container(container: Container) -> void:
 	for child in container.get_children():
-		child.free()
+		child.queue_free()
 
 
 func _toggle_expand() -> void:

@@ -307,7 +307,7 @@ func _execute_action(action: Dictionary) -> void:
 
 func _clear_container(container: Container) -> void:
 	for child in container.get_children():
-		child.free()
+		child.queue_free()
 
 
 func _toggle_expand() -> void:
