@@ -28,6 +28,10 @@ expand_mode = 1
 
 [node name="TopMenuBar" parent="." unique_id=369510685 instance=ExtResource("1_top_menu_bar")]
 layout_mode = 1
+script = null
+
+[node name="TextureRect" type="TextureRect" parent="TopMenuBar" unique_id=971405030]
+layout_mode = 2
 
 [node name="WindowLayer" type="Control" parent="." unique_id=525186116]
 layout_mode = 1
@@ -39,8 +43,15 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Dock" parent="." unique_id=223293515 instance=ExtResource("2_dock")]
+custom_minimum_size = Vector2(0, 44)
 layout_mode = 1
+anchors_preset = 12
+anchor_left = 0.0
+anchor_right = 1.0
+offset_left = 0.0
 offset_top = -88.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="ToastLayer" type="Control" parent="." unique_id=1506575902]
 layout_mode = 1
