@@ -14,6 +14,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_desktop_script")
 
+[node name="Background2" type="TextureRect" parent="." unique_id=792468196]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.047000002
+anchor_right = 1.0
+anchor_bottom = 0.90000004
+offset_top = 0.3999977
+offset_right = -1.0
+offset_bottom = -4.0
+texture = ExtResource("4_l4poe")
+expand_mode = 1
+
 [node name="TopMenuBar" parent="." unique_id=369510685 instance=ExtResource("1_top_menu_bar")]
 layout_mode = 1
 
@@ -28,7 +40,7 @@ mouse_filter = 2
 
 [node name="Dock" parent="." unique_id=223293515 instance=ExtResource("2_dock")]
 layout_mode = 1
-script = null
+offset_top = -88.0
 
 [node name="ToastLayer" type="Control" parent="." unique_id=1506575902]
 layout_mode = 1
@@ -38,15 +50,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="Background2" type="TextureRect" parent="." unique_id=792468196]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.047000002
-anchor_right = 1.0
-anchor_bottom = 0.90000004
-offset_top = 0.3999977
-offset_right = -1.0
-offset_bottom = 35.0
-texture = ExtResource("4_l4poe")
-expand_mode = 1
