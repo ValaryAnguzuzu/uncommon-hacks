@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cjfel2in07qjm"]
+[gd_scene load_steps=5 format=3 uid="uid://cjfel2in07qjm"]
 
 [ext_resource type="PackedScene" uid="uid://8nn8bvi5c7vw" path="res://TopMenuBar.tscn" id="1_top_menu_bar"]
 [ext_resource type="PackedScene" uid="uid://dj4qvp67hcnbi" path="res://Dock.tscn" id="2_dock"]
@@ -33,7 +33,97 @@ script = null
 [node name="TextureRect" type="TextureRect" parent="TopMenuBar" unique_id=971405030]
 layout_mode = 2
 
+[node name="DesktopIcons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.08
+anchor_right = 0.76
+anchor_bottom = 0.93
+mouse_filter = 2
+
 [node name="WindowLayer" type="Control" parent="." unique_id=525186116]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.08
+anchor_right = 0.76
+anchor_bottom = 0.93
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ClockPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 1070.0
+offset_top = 82.0
+offset_right = 1248.0
+offset_bottom = 168.0
+
+[node name="ClockMargin" type="MarginContainer" parent="ClockPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 10
+
+[node name="ClockStack" type="VBoxContainer" parent="ClockPanel/ClockMargin"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="TimerLabel" type="Label" parent="ClockPanel/ClockMargin/ClockStack"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "01:15"
+horizontal_alignment = 1
+
+[node name="TimerSubLabel" type="Label" parent="ClockPanel/ClockMargin/ClockStack"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "week clock"
+horizontal_alignment = 1
+
+[node name="MessagePanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 930.0
+offset_top = 186.0
+offset_right = 1248.0
+offset_bottom = 330.0
+
+[node name="MessageMargin" type="MarginContainer" parent="MessagePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 14
+
+[node name="MessageStack" type="VBoxContainer" parent="MessagePanel/MessageMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MessageTitleLabel" type="Label" parent="MessagePanel/MessageMargin/MessageStack"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "💡 TIPS"
+
+[node name="MessageBodyLabel" type="Label" parent="MessagePanel/MessageMargin/MessageStack"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Open something. Make one move."
+autowrap_mode = 3
+
+[node name="Dock" parent="." unique_id=223293515 instance=ExtResource("2_dock")]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -490.0
+offset_top = -94.0
+offset_right = 490.0
+offset_bottom = -18.0
+
+[node name="FeedbackLayer" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,17 +131,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="Dock" parent="." unique_id=223293515 instance=ExtResource("2_dock")]
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 1
-anchors_preset = 12
-anchor_left = 0.0
-anchor_right = 1.0
-offset_left = 0.0
-offset_top = -88.0
-offset_right = 0.0
-offset_bottom = 0.0
 
 [node name="ToastLayer" type="Control" parent="." unique_id=1506575902]
 layout_mode = 1

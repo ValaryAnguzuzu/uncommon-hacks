@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://dtun1ycnx5sds"]
+
+[ext_resource type="Script" path="res://scripts/DiscoverStatementWindow.gd" id="1_discover_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window"]
+bg_color = Color(0.0156863, 0.0313726, 0.0588235, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.105882, 0.266667, 0.501961, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_title"]
+bg_color = Color(0.0352941, 0.0627451, 0.105882, 1)
+border_width_bottom = 1
+border_color = Color(0.105882, 0.266667, 0.501961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.0745098, 0.137255, 0.235294, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_fill"]
+bg_color = Color(0.22, 1, 0.55, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_discover"]
+bg_color = Color(0.145098, 0.0352941, 0.0705882, 0.82)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.85, 0.18, 0.22, 0.82)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="DiscoverStatementWindow" type="PanelContainer"]
+custom_minimum_size = Vector2(560, 500)
+offset_right = 560.0
+offset_bottom = 500.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_window")
+script = ExtResource("1_discover_script")
+
+[node name="OuterMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="WindowStack" type="VBoxContainer" parent="OuterMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TitleBar" type="HBoxContainer" parent="OuterMargin/WindowStack"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_title")
+theme_override_constants/separation = 10
+
+[node name="WindowControls" type="HBoxContainer" parent="OuterMargin/WindowStack/TitleBar"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CloseDot" type="Button" parent="OuterMargin/WindowStack/TitleBar/WindowControls"]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+text = ""
+
+[node name="MinimizeDot" type="PanelContainer" parent="OuterMargin/WindowStack/TitleBar/WindowControls"]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+
+[node name="ZoomDot" type="Button" parent="OuterMargin/WindowStack/TitleBar/WindowControls"]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+text = ""
+
+[node name="TitleLabel" type="Label" parent="OuterMargin/WindowStack/TitleBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.42, 0.49, 0.62, 1)
+theme_override_font_sizes/font_size = 17
+text = "DISCOVER_STATEMENT.PDF"
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="OuterMargin/WindowStack/TitleBar"]
+visible = false
+layout_mode = 2
+text = "X"
+
+[node name="Body" type="VBoxContainer" parent="OuterMargin/WindowStack"]
+layout_mode = 2
+theme_override_constants/separation = 18
+theme_override_constants/margin_left = 30
+
+[node name="SpacerTop" type="Control" parent="OuterMargin/WindowStack/Body"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+
+[node name="AccountLabel" type="Label" parent="OuterMargin/WindowStack/Body"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.42, 0.54, 1)
+theme_override_font_sizes/font_size = 20
+text = "CHECKING ACCOUNT"
+horizontal_alignment = 1
+
+[node name="BalanceLabel" type="Label" parent="OuterMargin/WindowStack/Body"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 54
+text = "$500"
+horizontal_alignment = 1
+
+[node name="Rule" type="HSeparator" parent="OuterMargin/WindowStack/Body"]
+layout_mode = 2
+
+[node name="RentRow" type="Label" parent="OuterMargin/WindowStack/Body"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.67, 0.76, 1)
+theme_override_font_sizes/font_size = 18
+text = "Weekly rent burn                         $90-$150"
+
+[node name="GigRow" type="Label" parent="OuterMargin/WindowStack/Body"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.22, 1, 0.55, 1)
+theme_override_font_sizes/font_size = 18
+text = "Side gig income                             +$180"
+
+[node name="PaymentRow" type="Label" parent="OuterMargin/WindowStack/Body"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 18
+text = "Min. payment                         auto-deducted"
+
+[node name="HealthLabel" type="Label" parent="OuterMargin/WindowStack/Body"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.42, 0.54, 1)
+theme_override_font_sizes/font_size = 17
+text = "ACCOUNT HEALTH"
+
+[node name="HealthBar" type="ProgressBar" parent="OuterMargin/WindowStack/Body"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bar_fill")
+show_percentage = false
+
+[node name="DiscoverBox" type="PanelContainer" parent="OuterMargin/WindowStack/Body"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_discover")
+
+[node name="DiscoverMargin" type="MarginContainer" parent="OuterMargin/WindowStack/Body/DiscoverBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 14
+
+[node name="DiscoverStack" type="VBoxContainer" parent="OuterMargin/WindowStack/Body/DiscoverBox/DiscoverMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DiscoverTitle" type="Label" parent="OuterMargin/WindowStack/Body/DiscoverBox/DiscoverMargin/DiscoverStack"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 18
+text = "DISCOVER CARD BALANCE"
+
+[node name="DebtLabel" type="Label" parent="OuterMargin/WindowStack/Body/DiscoverBox/DiscoverMargin/DiscoverStack"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 34
+text = "$1200"
+
+[node name="DebtSubLabel" type="Label" parent="OuterMargin/WindowStack/Body/DiscoverBox/DiscoverMargin/DiscoverStack"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 16
+text = "minimum payment deducted weekly"

@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bmidw5e3rg31a"]
+
+[ext_resource type="Script" path="res://scripts/TodayStatsWindow.gd" id="1_stats_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window"]
+bg_color = Color(0.0156863, 0.0235294, 0.0392157, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.160784, 0.298039, 0.501961, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_title"]
+bg_color = Color(0.0352941, 0.0431373, 0.0588235, 1)
+border_width_bottom = 1
+border_color = Color(0.160784, 0.298039, 0.501961, 1)
+
+[node name="TodayStatsWindow" type="PanelContainer"]
+custom_minimum_size = Vector2(360, 360)
+offset_right = 360.0
+offset_bottom = 360.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_window")
+script = ExtResource("1_stats_script")
+
+[node name="OuterMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="WindowStack" type="VBoxContainer" parent="OuterMargin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TitleBar" type="HBoxContainer" parent="OuterMargin/WindowStack"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_title")
+
+[node name="WindowControls" type="HBoxContainer" parent="OuterMargin/WindowStack/TitleBar"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CloseDot" type="Button" parent="OuterMargin/WindowStack/TitleBar/WindowControls"]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+text = ""
+
+[node name="MinimizeDot" type="PanelContainer" parent="OuterMargin/WindowStack/TitleBar/WindowControls"]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+
+[node name="ZoomDot" type="Button" parent="OuterMargin/WindowStack/TitleBar/WindowControls"]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+text = ""
+
+[node name="TitleLabel" type="Label" parent="OuterMargin/WindowStack/TitleBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.48, 0.56, 0.7, 1)
+theme_override_font_sizes/font_size = 15
+text = "TODAY_STATS.TXT"
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="OuterMargin/WindowStack/TitleBar"]
+visible = false
+layout_mode = 2
+text = "X"
+
+[node name="Body" type="MarginContainer" parent="OuterMargin/WindowStack"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 22
+
+[node name="StatsLabel" type="Label" parent="OuterMargin/WindowStack/Body"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.82, 0.94, 1)
+theme_override_font_sizes/font_size = 17
+text = "WEEK: 1 / 15"

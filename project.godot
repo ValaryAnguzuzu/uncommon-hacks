@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="uncommonhacks"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://BootScreen.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 PlayerState="*uid://dlgev0mfe5aa8"
+GameManager="*res://scripts/GameManager.gd"
 
 [display]
 
@@ -25,6 +26,8 @@ window/size/viewport_width=1280
 window/size/viewport_height=800
 window/size/window_width_override=1280
 window/size/window_height_override=800
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [physics]
 
