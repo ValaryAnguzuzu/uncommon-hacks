@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dj4qvp67hcnbi"]
+[gd_scene load_steps=10 format=3 uid="uid://dj4qvp67hcnbi"]
 
 [ext_resource type="Script" path="res://scripts/Dock.gd" id="1_dock_script"]
 
@@ -100,6 +100,17 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 content_margin_left = 10.0
 content_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alert_badge"]
+bg_color = Color(0.137255, 0.690196, 0.376471, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 5.0
+content_margin_top = 1.0
+content_margin_right = 5.0
+content_margin_bottom = 1.0
 
 [node name="Dock" type="PanelContainer"]
 custom_minimum_size = Vector2(0, 44)
@@ -205,3 +216,20 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_task_button_hover")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_task_button_pressed")
 theme_override_styles/focus = SubResource("StyleBoxFlat_task_button_hover")
 text = "Interview"
+
+[node name="InterviewAlertBadge" type="PanelContainer" parent="DockRow/InterviewButton"]
+visible = false
+custom_minimum_size = Vector2(24, 20)
+layout_mode = 0
+offset_left = 70.0
+offset_top = 2.0
+offset_right = 94.0
+offset_bottom = 22.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_alert_badge")
+
+[node name="CountLabel" type="Label" parent="DockRow/InterviewButton/InterviewAlertBadge"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1

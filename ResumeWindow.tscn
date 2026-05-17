@@ -1,51 +1,273 @@
-[gd_scene format=3 uid="uid://dt3vq83hqkuh"]
+[gd_scene load_steps=10 format=3 uid="uid://dt3vq83hqkuh"]
+
+[ext_resource type="Script" path="res://scripts/ResumeWindow.gd" id="1_resume_window_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window"]
+bg_color = Color(0.105882, 0.113725, 0.129412, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.290196, 0.313726, 0.352941, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scan"]
+bg_color = Color(0.0705882, 0.0784314, 0.0941176, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.258824, 0.317647, 0.372549, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 14
+content_margin_top = 14
+content_margin_right = 14
+content_margin_bottom = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_paper"]
+bg_color = Color(0.956863, 0.964706, 0.976471, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.768627, 0.792157, 0.827451, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 18
+content_margin_top = 16
+content_margin_right = 18
+content_margin_bottom = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_bg"]
+bg_color = Color(0.145098, 0.156863, 0.176471, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_progress_fill"]
+bg_color = Color(0.290196, 0.72549, 0.611765, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_close_dot"]
+bg_color = Color(0.937255, 0.333333, 0.298039, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_minimize_dot"]
+bg_color = Color(0.956863, 0.717647, 0.262745, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_zoom_dot"]
+bg_color = Color(0.345098, 0.788235, 0.388235, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="ResumeWindow" type="PanelContainer"]
-custom_minimum_size = Vector2(460, 420)
+custom_minimum_size = Vector2(720, 540)
 layout_mode = 3
 offset_left = 160.0
-offset_top = 100.0
-offset_right = 620.0
-offset_bottom = 520.0
+offset_top = 88.0
+offset_right = 880.0
+offset_bottom = 628.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_window")
+script = ExtResource("1_resume_window_script")
 
-[node name="Content" type="VBoxContainer" parent="."]
+[node name="OuterMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="WindowStack" type="VBoxContainer" parent="OuterMargin"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="TitleBar" type="HBoxContainer" parent="Content"]
+[node name="TitleBar" type="HBoxContainer" parent="OuterMargin/WindowStack"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="TitleLabel" type="Label" parent="Content/TitleBar"]
+[node name="WindowControls" type="HBoxContainer" parent="OuterMargin/WindowStack/TitleBar"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="CloseDot" type="Button" parent="OuterMargin/WindowStack/TitleBar/WindowControls"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+text = ""
+theme_override_styles/normal = SubResource("StyleBoxFlat_close_dot")
+theme_override_styles/hover = SubResource("StyleBoxFlat_close_dot")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_close_dot")
+theme_override_styles/focus = SubResource("StyleBoxFlat_close_dot")
+
+[node name="MinimizeDot" type="PanelContainer" parent="OuterMargin/WindowStack/TitleBar/WindowControls"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_minimize_dot")
+
+[node name="ZoomDot" type="Button" parent="OuterMargin/WindowStack/TitleBar/WindowControls"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+text = ""
+theme_override_styles/normal = SubResource("StyleBoxFlat_zoom_dot")
+theme_override_styles/hover = SubResource("StyleBoxFlat_zoom_dot")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_zoom_dot")
+theme_override_styles/focus = SubResource("StyleBoxFlat_zoom_dot")
+
+[node name="TitleLabel" type="Label" parent="OuterMargin/WindowStack/TitleBar"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Resume"
+text = "Resume.doc - Candidate Build"
+theme_override_colors/font_color = Color(0.901961, 0.917647, 0.941176, 1)
 
-[node name="CloseButton" type="Button" parent="Content/TitleBar"]
+[node name="CloseButton" type="Button" parent="OuterMargin/WindowStack/TitleBar"]
 layout_mode = 2
 text = "X"
 
-[node name="ResumeScoreLabel" type="Label" parent="Content"]
+[node name="Body" type="HBoxContainer" parent="OuterMargin/WindowStack"]
 layout_mode = 2
-text = "Resume Score: 0"
+size_flags_vertical = 3
+theme_override_constants/separation = 14
 
-[node name="KeywordsTitle" type="Label" parent="Content"]
+[node name="ScanPanel" type="PanelContainer" parent="OuterMargin/WindowStack/Body"]
+custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
-text = "Keywords"
+theme_override_styles/panel = SubResource("StyleBoxFlat_scan")
 
-[node name="KeywordsList" type="VBoxContainer" parent="Content"]
+[node name="ScanStack" type="VBoxContainer" parent="OuterMargin/WindowStack/Body/ScanPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FileLabel" type="Label" parent="OuterMargin/WindowStack/Body/ScanPanel/ScanStack"]
+layout_mode = 2
+autowrap_mode = 3
+text = "FILE: applicant_final_FINAL_v7.pdf"
+theme_override_colors/font_color = Color(0.670588, 0.713726, 0.768627, 1)
+
+[node name="ResumeScoreLabel" type="Label" parent="OuterMargin/WindowStack/Body/ScanPanel/ScanStack"]
+layout_mode = 2
+text = "SCAN SCORE: 0"
+theme_override_colors/font_color = Color(0.94902, 0.956863, 0.968627, 1)
+
+[node name="ScoreProgress" type="ProgressBar" parent="OuterMargin/WindowStack/Body/ScanPanel/ScanStack"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+max_value = 160.0
+show_percentage = false
+theme_override_styles/background = SubResource("StyleBoxFlat_progress_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_progress_fill")
+
+[node name="SignalLabel" type="Label" parent="OuterMargin/WindowStack/Body/ScanPanel/ScanStack"]
+layout_mode = 2
+autowrap_mode = 3
+text = "SIGNAL: one lonely Git tag"
+theme_override_colors/font_color = Color(0.760784, 0.815686, 0.87451, 1)
+
+[node name="ReadinessLabel" type="Label" parent="OuterMargin/WindowStack/Body/ScanPanel/ScanStack"]
+layout_mode = 2
+autowrap_mode = 3
+text = "VERDICT: Draft energy. Needs proof."
+theme_override_colors/font_color = Color(0.568627, 0.85098, 0.752941, 1)
+
+[node name="MetaDivider" type="HSeparator" parent="OuterMargin/WindowStack/Body/ScanPanel/ScanStack"]
 layout_mode = 2
 
-[node name="GitKeywordLabel" type="Label" parent="Content/KeywordsList"]
+[node name="MetaLabel" type="Label" parent="OuterMargin/WindowStack/Body/ScanPanel/ScanStack"]
 layout_mode = 2
-text = "Git"
+autowrap_mode = 3
+text = "ATS notes:\n- keywords matter\n- shipped projects matter\n- confidence helps in interviews"
+theme_override_colors/font_color = Color(0.682353, 0.733333, 0.792157, 1)
 
-[node name="ProjectsTitle" type="Label" parent="Content"]
+[node name="ResumePaper" type="PanelContainer" parent="OuterMargin/WindowStack/Body"]
 layout_mode = 2
-text = "Projects Completed"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_paper")
 
-[node name="ProjectsList" type="VBoxContainer" parent="Content"]
+[node name="PaperMargin" type="MarginContainer" parent="OuterMargin/WindowStack/Body/ResumePaper"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="PaperStack" type="VBoxContainer" parent="OuterMargin/WindowStack/Body/ResumePaper/PaperMargin"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="CandidateNameLabel" type="Label" parent="OuterMargin/WindowStack/Body/ResumePaper/PaperMargin/PaperStack"]
+layout_mode = 2
+text = "College Student Trying Their Best"
+theme_override_colors/font_color = Color(0.0627451, 0.0745098, 0.0901961, 1)
+
+[node name="CandidateSubtitleLabel" type="Label" parent="OuterMargin/WindowStack/Body/ResumePaper/PaperMargin/PaperStack"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Seeking: software internship before checking account enters villain arc"
+theme_override_colors/font_color = Color(0.266667, 0.301961, 0.352941, 1)
+
+[node name="HeaderDivider" type="HSeparator" parent="OuterMargin/WindowStack/Body/ResumePaper/PaperMargin/PaperStack"]
 layout_mode = 2
 
-[node name="NoProjectsLabel" type="Label" parent="Content/ProjectsList"]
+[node name="SummaryTitle" type="Label" parent="OuterMargin/WindowStack/Body/ResumePaper/PaperMargin/PaperStack"]
 layout_mode = 2
-text = "None"
+text = "RECRUITER SUMMARY"
+theme_override_colors/font_color = Color(0.0862745, 0.105882, 0.129412, 1)
+
+[node name="SummaryLabel" type="Label" parent="OuterMargin/WindowStack/Body/ResumePaper/PaperMargin/PaperStack"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Thin file, but not hopeless. Needs more proof."
+theme_override_colors/font_color = Color(0.172549, 0.2, 0.239216, 1)
+
+[node name="KeywordsTitle" type="Label" parent="OuterMargin/WindowStack/Body/ResumePaper/PaperMargin/PaperStack"]
+layout_mode = 2
+text = "KEYWORD SIGNAL"
+theme_override_colors/font_color = Color(0.0862745, 0.105882, 0.129412, 1)
+
+[node name="KeywordsGrid" type="GridContainer" parent="OuterMargin/WindowStack/Body/ResumePaper/PaperMargin/PaperStack"]
+layout_mode = 2
+columns = 3
+
+[node name="GitKeywordLabel" type="Label" parent="OuterMargin/WindowStack/Body/ResumePaper/PaperMargin/PaperStack/KeywordsGrid"]
+custom_minimum_size = Vector2(110, 24)
+layout_mode = 2
+text = "[ Git ]"
+
+[node name="ProjectsTitle" type="Label" parent="OuterMargin/WindowStack/Body/ResumePaper/PaperMargin/PaperStack"]
+layout_mode = 2
+text = "SHIPPED PROOF"
+theme_override_colors/font_color = Color(0.0862745, 0.105882, 0.129412, 1)
+
+[node name="ProjectsList" type="VBoxContainer" parent="OuterMargin/WindowStack/Body/ResumePaper/PaperMargin/PaperStack"]
+layout_mode = 2
+
+[node name="NoProjectsLabel" type="Label" parent="OuterMargin/WindowStack/Body/ResumePaper/PaperMargin/PaperStack/ProjectsList"]
+layout_mode = 2
+autowrap_mode = 3
+text = "No shipped projects yet. Recruiters are squinting."
+
+[node name="FooterLabel" type="Label" parent="OuterMargin/WindowStack/Body/ResumePaper/PaperMargin/PaperStack"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Next move: build something real enough to survive a 15-second resume skim."
+theme_override_colors/font_color = Color(0.329412, 0.368627, 0.431373, 1)
